@@ -56,6 +56,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", inline: <<-SHELL
     sudo sed -e 's#http://archive.ubuntu.com/ubuntu#mirror://mirrors.ubuntu.com/mirrors.txt#g' -i /etc/apt/sources.list
     sudo apt-get update
+    sudo DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y
     sudo DEBIAN_FRONTEND=noninteractive apt-get install --install-recommends -y kubuntu-desktop kubuntu-full calligra digikam kdevelop
     sudo dpkg --configure -a
     sudo reboot
